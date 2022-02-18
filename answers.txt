@@ -1,0 +1,16 @@
+1a) ((4+5) > 99/11) :: Bool
+This is a boolean statement
+1b) number1 :: Rational
+This variable is an instance of a Rational
+1c) p :: Num a => a
+This variable is an instance of a Num
+1d) z :: [Char]
+This variable is a list of Chars
+1e) Types: int, Integer, char, bool, [char]
+Typeclasses: fractional, eq, ord
+Functions: ==, +, head, tail
+1f) / would be an infix function
+1g) / would also be a polymorphic function
+2) The output of the last statement shows that the function test is taking in two parameters that are lists of the same type, and returning another list of the same type. 
+3.10) We get a float when we input 10, and an error when we input "apple". 
+
