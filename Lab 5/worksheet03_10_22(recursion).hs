@@ -85,6 +85,10 @@ Problem 04: What does it do?
     d) What is the recursive case?
     e) Find what happens if we test the function with a negative number.
     f) Fix the function so that it stops generating numbers if n is negative.
+
+    The base case is when Operate is passed 1, and it returns 1.
+    The recursive case takes the number it was passed, multiplies it by 2 and subtracts 1, then decrements the 
+    given number by one.
 -}
 
 operate 1 = [ 1 ]
