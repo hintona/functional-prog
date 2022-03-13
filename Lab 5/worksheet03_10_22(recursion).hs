@@ -163,8 +163,9 @@ Sample IO:
 
 -}
 
-
-
+aTuplewithMaxFreq :: [(Char, Int)] -> (Char, Int)
+aTuplewithMaxFreq [] = (' ', 0)
+aTuplewithMaxFreq (x:xs) = if snd x > snd (aTuplewithMaxFreq xs) then x else aTuplewithMaxFreq xs
 
 
 {-
@@ -185,4 +186,6 @@ Sample IO:
 
 -}
 
-
+removeDuplicate x
+    | null x = []
+    | otherwise = if head x `elem` tail x then removeDuplicate (tail x) else head x : removeDuplicate (tail x)
