@@ -1,7 +1,11 @@
 {-
   Worksheet 03/17/22
   Topic: Higher Order Function
+<<<<<<< HEAD
   Name: Alex Hinton
+=======
+  Name: <your name goes here>
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
   Instruction: answer all the questions and submit the file.
   Total points: 40
   
@@ -15,10 +19,19 @@ Note: The instructor may or may not grade all your answers given the time and ot
 Problem 01: Unnamed Functions or Lambda Expressions
  a) Test each of the following lambda expressions/functions with three sample test cases.
 -}
+<<<<<<< HEAD
   square = (\x -> x * x)
   double = (\x -> x + x)
 
   squareList = (\[x] -> x * x)
+=======
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+
+
+  square = (\x -> x * x)
+
+  double = (\x -> x + x)
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
  
 {- 
  b) Write an expression to apply the square function on this list [1, (-1), 2, (-2), 3, (4/10)]. 
@@ -27,7 +40,13 @@ Note: If your compiler doesn't let you pass the list due to type restrictions, m
 square :: Num a => a -> a
 double :: Num a => a -> a
 -}
+<<<<<<< HEAD
 
+=======
+  squareList = map (\x -> x * x)
+
+  doubleList = map (\x -> x + x)
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
 {-
  d) Find the sample output of the following expression: map (\x -> double (square x))[1..5]
  e) Find an alternative way to complete the same task as 1.d). You may consider list comprehension as a possible technique.
@@ -43,6 +62,7 @@ double :: Num a => a -> a
  j) Zip two lists [1, 3, 5] and [2, 4 ,6] with function f (x, y). You may consider using the zipWith function.
 -}
 
+<<<<<<< HEAD
 {-
 *** Problem 01 :: Answers
 
@@ -61,6 +81,34 @@ a) *Main> square 2
 2
 
 b)
+=======
+  g = \x y -> x^2 + y^2
+
+  f = \x y -> g x y + 2*x*y
+
+  zipWithF = zipWith (\x y -> f x y)
+{-
+*** Problem 01 :: Answers
+a) *Main> square 4
+16
+*Main> square 12
+144
+*Main> square 3
+9
+*Main> double 4
+8
+*Main> double 12
+24
+*Main> double 3
+6
+
+d)*Main> map (\x -> double (square x))[1..5]
+[2,8,18,32,50]
+
+f)*Main> map (\x -> square (double x))[1..5]
+[4,16,36,64,100]
+
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
 -}
 
 
@@ -90,8 +138,40 @@ Note: Flip simply takes a function and returns a
 
 {-
 *** Problem 02 :: Answers
+<<<<<<< HEAD
 
 <Put your answers here ...>
+=======
+a1)zip [1..10] "hello"
+[(1,'h'),(2,'e'),(3,'l'),(4,'l'),(5,'o')]
+
+a2)flip zip [1..10] "hello"
+[('h',1),('e',2),('l',3),('l',4),('o',5)]
+
+b1)zipWith (/) [1..10] [10, 10, 10, 10, 10]
+[0.1,0.2,0.3,0.4,0.5]
+
+b2)zipWith (flip (/)) [1..10] [10, 10, 10, 10, 10]
+[10.0,5.0,3.3333333333333335,2.5,2.0]
+
+c1) zipWith (-) [1..10] [10,9,8,7,6,5,4,3,2,1]
+[-9,-7,-5,-3,-1,1,3,5,7,9]
+
+c2)zipWith (flip (-)) [1..10] [10,9,8,7,6,5,4,3,2,1]
+[9,7,5,3,1,-1,-3,-5,-7,-9]
+
+d1)(++) "hi" " there"
+"hi there"
+
+d2)flip (++) "hi" " there"
+" therehi"
+
+e1)zipWith (^) [1..10] (replicate 10 2)
+[1,4,9,16,25,36,49,64,81,100]
+
+e2)zipWith (flip (^)) [1..10] (replicate 10 2)
+[2,4,8,16,32,64,128,256,512,1024]
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
 
 -}
 
@@ -126,7 +206,12 @@ Prelude> foldl (+) 0 ((map (\x -> x / 2)) [1..5])
 Given that the operation of foldl is clear,
 
 a) define an expression that
+<<<<<<< HEAD
 folds a list of lists by summing up the elements from each internal list. Though there are multiple ways of writing the expression, in this case, you must use foldl as part of your expression. You are allowed to use built-in functions like map, sum, +, etc. in your expression.
+=======
+folds a list of lists by summing up the elements from each internal list. Though there are multiple ways of writing the expression, in this case, 
+you must use foldl as part of your expression. You are allowed to use built-in functions like map, sum, +, etc. in your expression.
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
 
 Sample IO:
 
@@ -145,7 +230,19 @@ b) The right fold, foldr, works similarly to the left fold,
 {-
 *** Problem 03 :: Answers
 
+<<<<<<< HEAD
 <Put your answers here ...>
+=======
+a)  map (\x -> foldl (+) 0 x) [[1],[1,2],[]]
+[1,3,0]
+map (\x -> foldl (+) 0 x) [[1..5], [10,10,10], [2,3,6]]
+[15,30,11]
+
+b)*Main> map (\x -> foldr (+) 0 x) [[1],[1,2],[]]
+[1,3,0]
+*Main> map (\x -> foldr (+) 0 x) [[1..5], [10,10,10], [2,3,6]]
+[15,30,11]
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
 
 -}
 
@@ -191,6 +288,20 @@ Now, complete the following tasks:
 {-
 *** Problem 04 :: Answers
 
+<<<<<<< HEAD
 <Put your answers here ...>
+=======
+a) filter (\x -> (length x) `mod` 2 == 1) ["goodbye","everyone","have","a","nice","day"]
+["goodbye","a","day"]
+
+b) filter (\x -> (x `mod` 10) == 0) [10,15,20,25,30]
+[10,20,30]
+
+c) filter (\(x,y) -> x `elem` "ABCDEFGHIJKLMNOPQRSTUVWXYZ") [('A',10),('b',20),('C',30),('d',40)]
+[('A',10),('C',30)]
+
+d) filter (\x -> x `elem` "aAeEiIoOuU") "I love vOwEls"
+"IoeOE"
+>>>>>>> d650058cf3b4d9090b22c6e9065eccca0edfeb42
 
 -}

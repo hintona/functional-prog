@@ -35,6 +35,10 @@ Problem 01: What does it do?
     b) Explain what the function does in your own words.
     c) What is the base case?
     d) What is the recursive case?
+
+    The base case is when only one non zero number is passed in, and then it will return the non zero number it was passed. 
+    The recursive does the modulo operation on the two numbers it was passed, then calls itself with the second number it was 
+    given and the result of the modulo operation.
 -}
 
 somefunction1 :: Integral a => a -> a -> a
@@ -49,6 +53,12 @@ Problem 02: What does it do?
     b) Explain what the function does in your own words.
     c) What is the base case?
     d) What is the recursive case?
+
+    This function takes the two things at the start of the list, combines them into one by 
+    calling the somefunction1 function on them, then continues down the list until eventually
+    everything in it has been combined into one value.
+    The base case is when it is passed a list with a single value, which then returns that single value.
+    The recursive case takes in a list, combines the first two elements of it, then calls itself on the remaining list. 
 
 -}
 
@@ -65,7 +75,7 @@ Problem 03: What does it do?
     d) What is the recursive case?
 
     This function adds together all of the odd numbers in a given list and returns the sum of them
-    The base case, where the list is empty, returns a 0
+    The base case, where the list is empty, returns a 0.
     In the recursive case, it checks if the current number is odd and if it is, adds it to the running sum.
     If the current number is not odd, then it does not add anything to the running sum and moves on.
  
@@ -89,10 +99,14 @@ Problem 04: What does it do?
     The base case is when Operate is passed 1, and it returns 1.
     The recursive case takes the number it was passed, multiplies it by 2 and subtracts 1, then decrements the 
     given number by one.
+    The program enters an infinite loop if given a negative number, since it continually decrements but has a positive stopping condition.
 -}
 
 operate 1 = [ 1 ]
-operate n = 2*n - 1 : operate (n-1)
+operate (-1) = [ -1 ]
+operate n = 
+    if n > 0 then 2*n - 1 : operate (n-1)
+    else 2*n + 1 : operate (n+1)
 
 {-
 [4 points]
@@ -108,6 +122,13 @@ palindrome x
  | (x == reverse(x)) = True
  | otherwise = False
 
+palindromeRec :: [Char] -> Bool
+palindromeRec [] = True 
+palindromeRec [x] = True
+palindromeRec (hx:xs)
+    | hx == last xs = palindromeRec (init xs) 
+    | hx /= last xs = False
+
 
 
 
@@ -118,8 +139,14 @@ Problem 6: Rewrite the following function using recursion.
 
 -}
 
+allPositiveNumbers :: (Num a, Ord a) => [a] -> a
 allPositiveNumbers xs = sum [ x | x <- xs, x > 0]
 
+allPositiveNumbersRec :: (Num a, Ord a) => [a] -> a
+allPositiveNumbersRec [x] = x
+allPositiveNumbersRec (x:xs) 
+    | x >= 0 = x + allPositiveNumbersRec xs
+    | x <= 0 = allPositiveNumbersRec xs
 
 
 {-
@@ -136,8 +163,9 @@ Sample IO:
 
 -}
 
-
-
+aTuplewithMaxFreq :: [(Char, Int)] -> (Char, Int)
+aTuplewithMaxFreq [] = (' ', 0)
+aTuplewithMaxFreq (x:xs) = if snd x > snd (aTuplewithMaxFreq xs) then x else aTuplewithMaxFreq xs
 
 
 {-
@@ -157,3 +185,7 @@ Sample IO:
 
 
 -}
+
+removeDuplicate x
+    | null x = []
+    | otherwise = if head x `elem` tail x then removeDuplicate (tail x) else head x : removeDuplicate (tail x)
