@@ -1,0 +1,2 @@
+6. part0 reads the contents of the numbers.dat file, and prints them to the terminal.
+It also saves the numbers into part0_output.dat
