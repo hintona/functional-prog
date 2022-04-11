@@ -1,7 +1,6 @@
 import System.IO
 
-interpret :: [String] -> [Int]
-interpret ys = [ read y :: Int | y <- ys]
+addl [x:xs]
 
 main = do
     contents <- readFile "../dataset/numbers.dat"
